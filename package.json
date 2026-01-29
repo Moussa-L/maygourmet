@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "name": "maygourmet",
+  "version": "1.0.0",
+  "description": "May Gourmet est une plateforme de réservation",
+  "main": "serveur.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moussa-L/maygourmet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Moussa-L/maygourmet/issues"
+  },
+  "homepage": "https://github.com/Moussa-L/maygourmet#readme"
+}
