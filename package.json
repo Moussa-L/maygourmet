@@ -1,12 +1,12 @@
 {
   "dependencies": {
+    "ejs": "^4.0.1",
     "express": "^5.2.1"
   },
   "name": "maygourmet",
   "version": "1.0.0",
   "description": "May Gourmet est une plateforme de réservation",
   "main": "serveur.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
