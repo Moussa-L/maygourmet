@@ -1,0 +1,5 @@
+/* je vais ajouter des styles pour la page d'accueil */
+/* je vais colorier le texte de la page d'accueil en rouge */
+h1 {
+  color: red;
+}

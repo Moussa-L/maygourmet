@@ -9,6 +9,12 @@ app.set('views', './views');
 // nous utilisons EJS pour les vues
 app.set('view engine', 'ejs');
 
+
+// Je précise que je vais utiliser un dossier qui s'appelle 'public' pour les fichiers statiques (css, images, js côté client)
+app.use(express.static('Publique'));
+
+
+
 // API ROUTE pour la page racine : localhost:3004/
 app.get('/', (req, res) => {
     //message à afficher : Bienvenue chez MayGourmet
