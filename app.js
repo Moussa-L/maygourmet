@@ -1,7 +1,24 @@
 const express = require('express');
 
+//j'ai importer le pilote MYSQL2 utilisé pour interroger la base de données MySQL
+const mysql2 = require("mysql2");
+
 //j'initialise mon application expressJS
 const app = express();
+
+// je crée une connexion à la base de données MySQL
+const optionsConnexionBaseDeDonnees = {
+    host: "localhost",
+    user:"root",
+    password: "Lidyamousa2907!",
+    database: "maygourmet",
+    port: 3306
+};
+
+
+//Middleware pour se connecter à la base de données MySQL
+//"pool" est la stratégie de connexion à la base de données 
+const myConnection = require('express-myconnection');
 
 // Configuration du moteur de vue qui doit aller chercher dans le repertoire 'views'
 app.set('views', './views');
