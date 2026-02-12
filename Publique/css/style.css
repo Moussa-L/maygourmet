@@ -1,5 +1,26 @@
 /* je vais ajouter des styles pour la page d'accueil */
 /* je vais colorier le texte de la page d'accueil en rouge */
 h1 {
-  color: red;
+  color: rgb(13, 38, 105);
+}
+
+/*je vais ajouter une couleur de fond à la page d'accueil */
+body {
+  background-color: rgba(224, 236, 148, 0.775);
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(227, 6, 135, 0.514);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(224, 15, 15, 0.843);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
 }

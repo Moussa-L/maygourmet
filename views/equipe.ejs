@@ -16,6 +16,19 @@
     <!-- ici je suis entrein d'appele dans views le fichier navabar.ejs qui est une vue a la navigations  -->
 
     <h1>Bienvenue dans mon équipe de MayGourmet !</h1>
+
+    <% resultatEquipe.forEach((membre) =>{ %>
+        <!--Pour chaque membre de l'équipe je crée une div card -->
+        <div id="card">
+            <!-- dans cette div tu me fait un enfant-->
+            <div class="conter">
+                <h4><%= membre.nom %> <%= membre.prenom %> </h4>
+            </div>
+        </div>
+        <%= membre.nom %>
+
+    <% }); %>
+        
    
 </body>
 </html>
