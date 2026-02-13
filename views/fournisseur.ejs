@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fournisseurs MayGourmet</title>
+</head>
+<body>
+    <%- include('navbar') -%>
+ <div class="container">
+  <form action="/api/fournisseur" method="post">
+
+    <label for="nomFounisseur">Nom</label>
+    <input type="text" id="nomFounisseur" name="nomFounisseur" placeholder="Nom du fournisseur..">
+
+
+    <label for="responsableFounisseur">Résponsable :</label>
+    <input type="text" id="responsableFounisseur" name="responsableFounisseur" placeholder="Nom du responsable..">
+
+
+    <label for="emailFournisseur">Mail :</label>
+    <input type="text" id="emailFournisseur" name="emailFournisseur" placeholder="Email du fournisseur..">
+
+    
+    <label for="telephoneFounisseur">Téléphone :</label>
+    <input type="text" id="telephoneFounisseur" name="telephoneFounisseur" placeholder="Téléphone du fournisseur..">
+
+
+    <label for="adresseFournisseur">Adresse Postale</label>
+    <input type="text" id="adresseFournisseur" name="adresseFournisseur" placeholder="Adresse postale du fournisseur..">
+
+    <!--<label for="">Pays</label>
+    <select id="country" name="country">
+      <option value="australia">97600</option>
+      <option value="canada">97607</option>
+      <option value="usa">97602</option>
+    </select>-->
+
+    <label for="presentationFournisseur">Présentation</label>
+    <textarea id="presentationFournisseur" name="presentationFournisseur" placeholder="Dites-nous en plus sur ce fournisseur.." style="height:200px"></textarea>
+
+    <input type="submit" value="Enregistrer"> 
+
+  </form>
+</div>
+</body>
+</html>

@@ -47,6 +47,7 @@ res.end();
 });
 
 
+
 app.get('/api/accueil', (req, res) => {
     console.log("hiiiiiiiiii !/api/accueil");
 
@@ -131,6 +132,45 @@ app.use((req, res,next) => {
     console.log("Bonjour, je suis votre application ExpressJS!");//affiche un message dans le terminal          
     next();// permet de passer au middleware suivant
 });*/
+
+//j'ajoute un fournisseur dans la table "fournisseur" de la base de données MySQL en utilisant la méthode POST
+app.post('/api/fournisseur', (req, res) => {
+    console.log("Le corps de la requête", req.body);
+
+});
+
+//j'affiche la page fournisseur
+app.get('/api/fournisseur', (req, res) => {
+    res.render("fournisseur");
+});
+
+
+
+/*app.get('/api/fournisseur', (req, res) => {
+    console.log("hiiiiiiiiii !/api/fournisseur");
+    req.getConnection((erreur, connection) => {
+        if(erreur) {
+            console.log(erreur);
+        } else {
+            connection.query("SELECT * FROM fournisseur", [], (err, resultatFournisseur) => {
+                if (err) {
+                    console.log("Erreur dans la requete SQL ", err);
+                } else {
+                    console.log("Mes fournisseurs : ", resultatFournisseur);
+                    res.render("fournisseur", {resultatFournisseur});
+                }
+            });
+
+        }
+    });
+
+});*/
+
+/*j'ajoute un plat dans la table "plat" de la base de données MySQL en utilisant la méthode POST   
+   app.post('/api/acceuil', (req, res) => {
+
+});*/
+
 
 
 module.exports = app;

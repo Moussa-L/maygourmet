@@ -1,0 +1,101 @@
+/* ============================= */
+/* RESET & BASE STYLES */
+/* ============================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e3f2fd, #f8fbff);
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+/* ============================= */
+/* CONTAINER */
+/* ============================= */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* ============================= */
+/* TITRES */
+/* ============================= */
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #0f172a;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* ============================= */
+/* CARD DESIGN */
+/* ============================= */
+
+.card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+}
+
+/* Hover effect professionnel */
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================= */
+/* BOUTONS */
+/* ============================= */
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #2563eb;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #1e40af;
+}
+
+/* ============================= */
+/* GRID RESPONSIVE */
+/* ============================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+
