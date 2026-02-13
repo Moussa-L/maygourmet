@@ -13,6 +13,10 @@ const myConnection = require('express-myconnection');
 //j'initialise mon application expressJS
 const app = express();
 
+app.use(express.json()); // pour pouvoir lire le corps de la requete en json
+app.use(express.urlencoded({extended: true})); // pour pouvoir lire le corps de la requete en urlencoded
+
+
 // je crée une connexion à la base de données MySQL
 const optionsConnexionBaseDeDonnees = {
     host: "localhost",
