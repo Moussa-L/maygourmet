@@ -139,7 +139,19 @@ app.use((req, res,next) => {
 
 //j'ajoute un fournisseur dans la table "fournisseur" de la base de données MySQL en utilisant la méthode POST
 app.post('/api/fournisseur', (req, res) => {
+    // je vais afficher le corps de la requête dans le terminal
     console.log("Le corps de la requête", req.body);
+    // je vais afficher le nom du fournisseur dans le terminal
+    console.log("Le nom du fournisseur", req.body.nomFounisseur);
+    // je vais afficher le responsable du fournisseur dans le terminal
+    console.log("Le responsable du fournisseur", req.body.responsableFounisseur);
+    // je vais afficher le email du fournisseur dans le terminal
+    console.log("Le email du fournisseur", req.body.emailFournisseur);
+    // je vais afficher le telephone du fournisseur dans le terminal
+    console.log("Le telephone du fournisseur", req.body.telephoneFounisseur);
+    // je vais afficher le adresse du fournisseur dans le terminal
+    console.log("Le adresse du fournisseur", req.body.adresseFournisseur);
+    // je vais afficher le site web du fournisseur dans le terminal
 
 });
 
