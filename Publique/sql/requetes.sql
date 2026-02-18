@@ -94,7 +94,8 @@ CREATE TABLE fournisseur (
 
 --afficher les tables existantes
 -- Ajouter un fournisseur dans la table fournisseur 
-INSERT INTO fournisseur (nom, responsable, telephone, mail, adresse_postale, produit_fournis) VALUES("Fournisseur A", "Jean Dupont", "0123456789", "jean.dupont@example.com", "123 Rue de la Paix, 75000 Paris", "Poulet roti, Poulet");
+INSERT INTO fournisseur (nom, responsable, telephone, mail, adresse_postale, produit_fournis) VALUES
+/*ICI nous avons des champ que nous allons ensuite complèter*/("Fournisseur A", "Jean Dupont", "0123456789", "jean.dupont@example.com", "123 Rue de la Paix, 75000 Paris", "Poulet roti, Poulet");
 --je vais insérer les noms des fournisseurs
 
 

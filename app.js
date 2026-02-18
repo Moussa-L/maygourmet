@@ -153,14 +153,58 @@ app.post('/api/fournisseur', (req, res) => {
     console.log("Le adresse du fournisseur", req.body.adresseFournisseur);
     // je vais afficher le site web du fournisseur dans le terminal
 
+//je suis en train de definire des variables pour stocker les données du fournisseur qui sont envoyées dans le corps de la requête  
+
+    const nomFounisseur = req.body.nomFounisseur;
+    const responsableFounisseur = req.body.responsableFounisseur;
+    const emailFournisseur = req.body.emailFournisseur;
+    const telephoneFounisseur = req.body.telephoneFounisseur;
+    const adresseFournisseur = req.body.adresseFournisseur;
+    
+
+    // je vais me connecter à la base de données MySQL pour ajouter le fournisseur dans la table "fournisseur"
+    const requeteSql= "INSERT INTO fournisseur (nomFounisseur, responsableFounisseur, emailFournisseur, telephoneFounisseur, adresseFournisseur, siteWebFournisseur) VALUES (?, ?, ?, ?, ?, ?)";
+ 
+    // je vais créer un tableau qui contient les données du fournisseur
+    const ordreChamps = [nomFounisseur, responsableFounisseur, emailFournisseur, telephoneFounisseur, adresseFournisseur,];
+
+    // je vais appeler la méthode getConnection() pour me connecter à la base de données MySQL
+    req.getConnection((erreur, connection) => {
+    if(erreur) { // si il y a une erreur de connexion à la base de données, je l'affiche dans le terminal
+
+        } else { // si il n'y a pas d'erreur de connexion à la base de données, je l'affiche dans le terminal
+
+            connection.query(requeteSql, ordreChamps, (err, resultat) => {
+
+                if (err) { // si il y a une erreur dans la requete SQL, je l'affiche dans le terminal
+
+                    console.log("Erreur dans la requete SQL ", err);
+
+                } else { // si il n'y a pas d'erreur dans la requete SQL, je l'affiche dans le terminal
+
+                    console.log("Le fournisseur a été ajouté avec succès ", resultat);
+
+                    // je redirige vers la page d'acceuil
+
+                    res.status(300).redirect('/api/accueil');
+        }
+
+    });
+
+    }
+
 });
 
+});
 //j'affiche la page fournisseur
 app.get('/api/fournisseur', (req, res) => {
     res.render("fournisseur");
 });
 
+/* CRUD (Operations): Create, Read, Update, Delete
+           METHODES: Create:POST, Read:GET, Update:PUT/PATCH, SUpprimer:DELETE
 
+Create : ajouter un fournisseur dans la table "fournisseur" de la base de données MySQL en utilisant la méthode POST*/
 
 /*app.get('/api/fournisseur', (req, res) => {
     console.log("hiiiiiiiiii !/api/fournisseur");
