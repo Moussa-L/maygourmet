@@ -84,6 +84,7 @@ CREATE TABLE fournisseur (
     mail VARCHAR(155) NOT NULL,
     adresse_postale VARCHAR(300) NOT NULL,
     produit_fournis VARCHAR(255) NOT NULL,
+    presentation VARCHAR(255) NOT NULL,
 
     /* J'associe la table fournisseur à la table produit 
     en utilisant l'ID_produit  provient de la table produit */
@@ -94,11 +95,13 @@ CREATE TABLE fournisseur (
 
 --afficher les tables existantes
 -- Ajouter un fournisseur dans la table fournisseur 
-INSERT INTO fournisseur (nom, responsable, telephone, mail, adresse_postale, produit_fournis) VALUES
-/*ICI nous avons des champ que nous allons ensuite complèter*/("Fournisseur A", "Jean Dupont", "0123456789", "jean.dupont@example.com", "123 Rue de la Paix, 75000 Paris", "Poulet roti, Poulet");
+INSERT INTO fournisseur (nom, responsable, telephone, mail, adresse_postale, produit_fournis, presentation) VALUES
+/*ICI nous avons des champ que nous allons ensuite complèter*/("Fournisseur A", "Jean Dupont", "0123456789", "jean.dupont@example.com", "123 Rue de la Paix, 75000 Paris", "Poulet roti, Poulet", "Fournisseur de produits frais et de qualité pour la restauration");
 --je vais insérer les noms des fournisseurs
 
-
+ALTER TABLE fournisseur
+ADD COLUMN line_no smallint NULL
+AFTER presentation;
 
 CREATE TABLE produit (  
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,

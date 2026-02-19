@@ -139,34 +139,40 @@ app.use((req, res,next) => {
 
 //j'ajoute un fournisseur dans la table "fournisseur" de la base de données MySQL en utilisant la méthode POST
 app.post('/api/fournisseur', (req, res) => {
-    // je vais afficher le corps de la requête dans le terminal
+    /*je vais afficher le corps de la requête dans le terminal
     console.log("Le corps de la requête", req.body);
     // je vais afficher le nom du fournisseur dans le terminal
     console.log("Le nom du fournisseur", req.body.nomFounisseur);
     // je vais afficher le responsable du fournisseur dans le terminal
     console.log("Le responsable du fournisseur", req.body.responsableFounisseur);
     // je vais afficher le email du fournisseur dans le terminal
-    console.log("Le email du fournisseur", req.body.emailFournisseur);
+    console.log("Le mail du fournisseur", req.body.mailFournisseur);
     // je vais afficher le telephone du fournisseur dans le terminal
     console.log("Le telephone du fournisseur", req.body.telephoneFounisseur);
     // je vais afficher le adresse du fournisseur dans le terminal
     console.log("Le adresse du fournisseur", req.body.adresseFournisseur);
+    // je vais afficher le produit fourni par le fournisseur dans le terminal
+    console.log("Le produit fourni par le fournisseur", req.body.produitFournis);
     // je vais afficher le site web du fournisseur dans le terminal
+    console.log("Le site web du fournisseur", req.body.presentationFournisseur);
+    */
 
 //je suis en train de definire des variables pour stocker les données du fournisseur qui sont envoyées dans le corps de la requête  
 
     const nomFounisseur = req.body.nomFounisseur;
     const responsableFounisseur = req.body.responsableFounisseur;
-    const emailFournisseur = req.body.emailFournisseur;
+    const mailFournisseur = req.body.mailFournisseur;
     const telephoneFounisseur = req.body.telephoneFounisseur;
     const adresseFournisseur = req.body.adresseFournisseur;
+    const produitFournis = req.body.produitFournis;
+    const presentationFournisseur = req.body.presentationFournisseur;
     
 
     // je vais me connecter à la base de données MySQL pour ajouter le fournisseur dans la table "fournisseur"
-    const requeteSql= "INSERT INTO fournisseur (nomFounisseur, responsableFounisseur, emailFournisseur, telephoneFounisseur, adresseFournisseur, siteWebFournisseur) VALUES (?, ?, ?, ?, ?, ?)";
+    const requeteSql= "INSERT INTO fournisseur(nom, responsable, mail, telephone, adresse_postale, produit_fournis, presentation) VALUES (?, ?, ?, ?, ?, ? ,?)";
  
     // je vais créer un tableau qui contient les données du fournisseur
-    const ordreChamps = [nomFounisseur, responsableFounisseur, emailFournisseur, telephoneFounisseur, adresseFournisseur,];
+    const ordreChamps = [nomFounisseur, responsableFounisseur, mailFournisseur, telephoneFounisseur, adresseFournisseur, produitFournis, presentationFournisseur];
 
     // je vais appeler la méthode getConnection() pour me connecter à la base de données MySQL
     req.getConnection((erreur, connection) => {
