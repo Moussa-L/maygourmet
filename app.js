@@ -64,6 +64,40 @@ app.get('/api/accueil', (req, res) => {
 });
 
 app.get('/api/equipe', (req, res) => {
+});
+
+
+//APIroute pour supprimer un membre de l'équipe
+//Avec la méthode DELETE, je vais supprimer un membre de l'équipe en fonction de son id
+//Exenple:localhost:3004/api/equipe/1
+
+app.delete('/api/equipe/:id', (req, res) => {
+    const idMembreEquipe = req.params.id;
+    /*le point d'interrogation sert a attendre une variables dynamique */
+    const queryDelete = "DELETE FROM equipe WHERE id = ?";
+
+    req.getConnection((erreur, connection) => {
+        if(erreur) {
+            console.log("Erreur de connexion à la base de données : ", erreur);
+        } else {
+            connection.query(queryDelete , [idMembreEquipe], (err,resultat) => {
+                if (err) {
+                    console.log("Erreur requete Suppression : ", err);
+                } else {
+                    console.log("BRAVO! Membre de l'équipe supprimé avec succès : ", resultat);
+                    res.status(200).redirect('/api/acceuil');
+                }
+
+            });
+        }
+
+     });
+
+});
+
+
+
+app.get('/api/equipe', (req, res) => {
     console.log("hiiiiiiiiii !/api/equipe");
     req.getConnection((erreur, connection) => {
         if(erreur) {

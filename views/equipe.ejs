@@ -15,21 +15,31 @@
     <%- include('navbar') -%>
     <!-- ici je suis entrein d'appele dans views le fichier navabar.ejs qui est une vue a la navigations  -->
 
+
+    
+
     <h1>Bienvenue dans mon équipe de MayGourmet !</h1>
     
 
-    <% resultatEquipe.forEach((membre) =>{ %>
+    <% resultatEquipe.forEach((result) =>{ %>
         <!--Pour chaque membre de l'équipe je crée une div card -->
-        <div class="card">
+        <div class="row">
             <!-- dans cette div tu me fait un enfant-->
             <div class="container">
-                <h4><%= membre.nom %> <%= membre.prenom %> </h4>
+                <h4><b><%= result.nom %> <%= result.prenom %><b></h4>
+                <p><%= result.poste %></p>
+                <input type="button" value="supprimer" onclick="supprimerMembre('<%= result.id %>')">
             </div>
         </div>
-        <%= membre.nom %>
+        <%= result.nom %>
 
     <% }); %>
         
    
 </body>
+
+<script>
+    
+</script>
+
 </html>
