@@ -1,0 +1,24 @@
+body{
+    background-image: url('/images/resto.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-size: 35px;
+    font-weight: bold;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+
+
+h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-top: 400px;
+}
+
+h4 {
+    color: #ffffff;
+    text-align: center;
+    margin-top: -50px;
+} 

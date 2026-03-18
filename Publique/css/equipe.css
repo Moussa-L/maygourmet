@@ -1,101 +1,105 @@
-/* ============================= */
-/* RESET & BASE STYLES */
-/* ============================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #e3f2fd, #f8fbff);
-    color: #1e293b;
-    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    background-color: #be6918;
+    margin: 0;
+    padding: 20px;
 }
 
-/* ============================= */
-/* CONTAINER */
-/* ============================= */
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 40px auto;
-}
-
-/* ============================= */
-/* TITRES */
-/* ============================= */
-
+/* Titre */
 h1 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    color: #0f172a;
-    font-weight: 700;
-    letter-spacing: 1px;
+    margin-bottom: 30px;
+    color: #fdfdfd;
 }
 
-/* ============================= */
-/* CARD DESIGN */
-/* ============================= */
+/* Conteneur des cartes */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
 
+/* Carte */
 .card {
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    margin-bottom: 25px;
-}
-
-/* Hover effect professionnel */
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-}
-
-/* ============================= */
-/* BOUTONS */
-/* ============================= */
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 8px;
-    background-color: #2563eb;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #1e40af;
-}
-
-/* ============================= */
-/* GRID RESPONSIVE */
-/* ============================= */
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
-
-/* ============================= */
-/* FOOTER */
-/* ============================= */
-
-footer {
-    text-align: center;
+    background: rgb(19, 36, 75);
+    width: 500px;
     padding: 20px;
-    margin-top: 50px;
-    font-size: 0.9rem;
-    color: #64748b;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* Effet au survol */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Nom */
+.card h2 {
+    margin: 10px 0;
+    color: #fffbfb;
+}
+
+/* Poste */
+.card p {
+    color: hwb(0 100% 0%);
+    margin-bottom: 15px;
+}
+
+/* Bouton */
+.card button {
+    background-color: rgb(28, 45, 83);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background-color: #bb5e13;
+}
+
+
+
+/* The Modal (background) */
+.modal {
+ 
+  position: fixed; /* Stay in place */
+  z-index: 1; /* en avant */
+  left: 0; /* Positionné à gauche */
+  top: 0; /* allignelment en haut */
+  width: 100%; /*largeur */
+  height: 100%; /* hauteur */
+  overflow: auto; /* scroll  */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/*Modal Content/Box */
+.modal-content {
+  background-color: rgb(255, 255, 255);
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 30px;
+  border: 5px solid #bb5e13;
+  width: 80%; /* Could be more or less, depending on screen size */
+} 
+
+ /*The Close Button */
+.close {
+  color: #142064;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #bb5e13;
+  text-decoration: none;
+  cursor: pointer;
+}
 

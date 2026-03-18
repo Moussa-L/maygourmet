@@ -52,7 +52,7 @@ res.end();
 
 
 
-app.get('/api/accueil', (req, res) => {
+app.get('/api/acceuil', (req, res) => {
     console.log("hiiiiiiiiii !/api/accueil");
 
     res.render('acceuil');
@@ -63,8 +63,8 @@ app.get('/api/accueil', (req, res) => {
     res.end();*/
 });
 
-app.get('/api/equipe', (req, res) => {
-});
+/*app.get('/api/equipe', (req, res) => {
+});*/
 
 
 //APIroute pour supprimer un membre de l'équipe
@@ -85,7 +85,7 @@ app.delete('/api/equipe/:id', (req, res) => {
                     console.log("Erreur requete Suppression : ", err);
                 } else {
                     console.log("BRAVO! Membre de l'équipe supprimé avec succès : ", resultat);
-                    res.status(200).redirect('/api/acceuil');
+                    res.status(200).json({ routeAccueil: "/api/acceuil"});
                 }
 
             });
@@ -94,6 +94,19 @@ app.delete('/api/equipe/:id', (req, res) => {
      });
 
 });
+/*api pour ajouter un membre à l'équipe le membre serra inséré dans la table "equipe" de la base de données MySQL*/
+
+app.post('/api/equipe', (req, res) => {
+    const nomMembreEquipe = req.body.nomMembreEquipe;
+    const prenomMembreEquipe = req.body.prenomMembreEquipe;
+    const mailMembreEquipe = req.body.mailMembreEquipe;
+    const telephoneMembreEquipe = req.body.telephoneMembreEquipe;
+    const posteMembreEquipe = req.body.posteMembreEquipe;
+    const presentationMembreEquipe = req.body.presentationMembreEquipe;
+    const dateRecrutement = req.body.dateRecrutement;
+  
+});
+
 
 
 
@@ -240,6 +253,9 @@ app.post('/api/fournisseur', (req, res) => {
 app.get('/api/fournisseur', (req, res) => {
     res.render("fournisseur");
 });
+
+
+
 
 /* CRUD (Operations): Create, Read, Update, Delete
            METHODES: Create:POST, Read:GET, Update:PUT/PATCH, SUpprimer:DELETE
