@@ -16,6 +16,7 @@ span.onclick = function() {
 
 //sert a appuiyer n'importe ou pour fermer la modale
 window.onclick = function(event) {
+  event.preventDefault()
   if (event.target == modale) {
     modale.style.display = "none";
   }

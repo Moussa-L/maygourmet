@@ -11,7 +11,7 @@
 
         ).then(
 
-            (donne) => window.location.href = donnee.routeAccueil
+            (donnee) => window.location.href = donnee.routeEquipe
 
         ).catch(
 

@@ -106,7 +106,8 @@ app.delete('/api/equipe/:id', (req, res) => {
                     console.log("Erreur requete Suppression : ", err);
                 } else {
                     console.log("BRAVO! Membre de l'équipe supprimé avec succès : ", resultat);
-                    res.status(302).redirect("/api/acceuil");
+                    //  res.status(200).redirect("/api/equipe");
+                  res.status(200).json({ routeEquipe: "/api/equipe"})
                 }
 
             });
