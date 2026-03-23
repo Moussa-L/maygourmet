@@ -12,6 +12,7 @@
     
     <!--je vais importer le fichier js -->
     <script src="/js/modale.js" defer>  </script>
+    <script src="/js/script.js" defer>  </script>
     
 
 </head>
@@ -27,7 +28,7 @@
 
     <h1>Bienvenue dans mon équipe de MayGourmet !</h1>
 
-    <div class="container">
+    <!-- <div class="container">
 
     <div class="card">
         <h2>Ngoma Jean</h2>
@@ -47,26 +48,31 @@
         <h2>Doe John</h2>
         <p>Chef de projet</p>
         <button>Supprimer</button>
-        <img src="/images/noir.png" alt="Chef de projet">
     </div>
 
-</div>
+</div> -->
 
     
 
-    <% resultatEquipe.forEach((result) =>{ %>
-        <!--Pour chaque membre de l'équipe je crée une div card -->
-        <div class="row">
-            <!-- dans cette div tu me fait un enfant-->
+    <div class="row">
+        <% resultatEquipe.forEach((result) =>{ %>
             <div class="container">
-                <h4><b><%= result.nom %> <%= result.prenom %><b></h4>
-                <p><%= result.poste %></p>
-                <input type="button" value="supprimer" onclick="supprimerMembre('<%= result.id %>')">
+                <div class="card">
+                    <h2><b><%= result.nom %> <%= result.prenom %><b></h2>
+                    <p><%= result.poste %></p>
+                    <button type="submit" onclick="supprimerMembre('<%= result.id %>')">Supprimer</button>
+
+                    <!-- <input type="button" value="supprimer" onclick="supprimerMembre('<%= result.id %>')"> -->
+                    <img src="/images/Gente blanca 3d.jpg" alt="Chef de projet">
+
+                </div>
+
+                
+
             </div>
+        <% }); %>
 
-        </div>
-
-    <% }); %>
+    </div>
 
 
 <div class="row">
@@ -137,6 +143,13 @@
                         <input type="text" id="posteMembreEquipe" name="posteMembreEquipe" placeholder="Votre poste..">
                     </div>
 
+
+
+                    <div class="col-25">
+                        <label for="adresseMembreEquipe">Adresse:</label>
+                        <input type="text" id="adresseMembreEquipe" name="adresseMembreEquipe" placeholder="Votre adresse..">
+                    </div>                 
+
                     <div class="col-75">
                         <label for="presentationMembreEquipe">Présentation:</label>
                         <textarea id="presentationMembreEquipe" name="presentationMembreEquipe" placeholder="Dites-nous en plus sur vous.." style="height:200px"></textarea>
@@ -149,22 +162,21 @@
 
 
                 </div>
+
+                <div class="row">
+                    <button id="btnEnregistrer">Envoyer</button>
+                </div>
             </form>   
         </div>
 
     </div>
 
-        
-
-
   
-
-
   
   <div class="modal-footer">
     
     <h3>On cuisine avec MAYGOURMET </h3>
-    <button id="btnEnregistrer">Envoyer</button>
+    
   </div>
 </div>
 
@@ -173,30 +185,6 @@
    
 </body>
 
-<script>
-    function supprimerMembre(id) {
-        const routeComplete = '/api/equipe/' + id;
-        
-        fetch(
 
-            routeComplete,{method: "DELETE"}
-
-        ).then(
-
-            (reponse) => reponse.json()
-
-        ).then(
-
-            (donne) => window.location.href = donnee.routeAccueil
-
-        ).catch(
-
-            (erreur) => console.log(erreur)
-        )
-        
-
-    }
-
-</script>
 
 </html>

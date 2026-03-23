@@ -71,45 +71,6 @@ app.get('/api/acceuil', (req, res) => {
 //Avec la méthode DELETE, je vais supprimer un membre de l'équipe en fonction de son id
 //Exenple:localhost:3004/api/equipe/1
 
-app.delete('/api/equipe/:id', (req, res) => {
-    const idMembreEquipe = req.params.id;
-    /*le point d'interrogation sert a attendre une variables dynamique */
-    const queryDelete = "DELETE FROM equipe WHERE id = ?";
-
-    req.getConnection((erreur, connection) => {
-        if(erreur) {
-            console.log("Erreur de connexion à la base de données : ", erreur);
-        } else {
-            connection.query(queryDelete , [idMembreEquipe], (err,resultat) => {
-                if (err) {
-                    console.log("Erreur requete Suppression : ", err);
-                } else {
-                    console.log("BRAVO! Membre de l'équipe supprimé avec succès : ", resultat);
-                    res.status(200).json({ routeAccueil: "/api/acceuil"});
-                }
-
-            });
-        }
-
-     });
-
-});
-/*api pour ajouter un membre à l'équipe le membre serra inséré dans la table "equipe" de la base de données MySQL*/
-
-app.post('/api/equipe', (req, res) => {
-    const nomMembreEquipe = req.body.nomMembreEquipe;
-    const prenomMembreEquipe = req.body.prenomMembreEquipe;
-    const mailMembreEquipe = req.body.mailMembreEquipe;
-    const telephoneMembreEquipe = req.body.telephoneMembreEquipe;
-    const posteMembreEquipe = req.body.posteMembreEquipe;
-    const presentationMembreEquipe = req.body.presentationMembreEquipe;
-    const dateRecrutement = req.body.dateRecrutement;
-  
-});
-
-
-
-
 app.get('/api/equipe', (req, res) => {
     console.log("hiiiiiiiiii !/api/equipe");
     req.getConnection((erreur, connection) => {
@@ -130,81 +91,71 @@ app.get('/api/equipe', (req, res) => {
 
 });
 
-/*
-app.get('/api/equipe', (req, res) => {
 
-    console.log("Mon équipe MayGOURMET /api/equipe");  
+app.delete('/api/equipe/:id', (req, res) => {
+    const idMembreEquipe = req.params.id;
+    /*le point d'interrogation sert a attendre une variables dynamique */
+    const queryDelete = "DELETE FROM equipe WHERE id = ?";
 
-    //je me connecte à la base de données MySQL grace a la methode getConnection()
     req.getConnection((erreur, connection) => {
-        if(erreur) { //si il y a une erreur de connexion à la base de données, je l'affiche dans le terminal
-            console.log( erreur);
-        } else { //si il n'y a pas d'erreur de connexion à la base de données, je l'affiche dans le terminal
-            connection.query("SELECT * FROM equipe", [], (err, resultatEquipe) => {
-                if (err) {
-                    console.log("Erreur dans la requete SQL ", err);
-                } else {
-                    console.log("Mon équipe : ", resultatEquipe);
-                  
-                }
-});  */   
-
-/*app.get("/api/equipe", (req, res) => {
-    console.log("Mon équipe MayGOURMET /api/equipe");  
-
-    /je me connecte à la base de données MySQL grace a la methode getConnection()
-    req.getConnection((erreur, connection) => {
-        //si il y a une erreur de connexion à la base de données, je l'affiche dans le terminal
-        if(erreur) { 
-            console.log( erreur);
-            //si il n'y a pas d'erreur de connexion à la base de données, je l'affiche dans le terminal
+        if(erreur) {
+            console.log("Erreur de connexion à la base de données : ", erreur);
         } else {
-            //il vas recupérer les membres de l'équipe dans la table "equipe" de la base de données MySQL et les afficher dans le terminal
-            connection.query("SELECT * FROM equipe", [], (err, resultatEquipe) => {
+            connection.query(queryDelete , [idMembreEquipe], (err,resultat) => {
                 if (err) {
-                    console.log("Erreur dans la requete SQL ", err);
+                    console.log("Erreur requete Suppression : ", err);
                 } else {
-                    console.log("Mon équipe : ", resultatEquipe);
+                    console.log("BRAVO! Membre de l'équipe supprimé avec succès : ", resultat);
+                    res.status(302).redirect("/api/acceuil");
                 }
+
             });
         }
-     
-});*/
-//res.render('equipe');
-/* je define une route qui retourne un message json
-app.use((req, res,next) => {
-    res.json({message:"hiiiiiiiiii !"});// envoie une réponse sur json
-    next();// permet de passer au middleware suivant
-});*/
 
-//// je define la route par défaut
+     });
 
-/*app.use((req, res, next) => {
-    console.log("Bonjour, je suis votre application ExpressJS!");//affiche un message dans le terminal          
-    next();// permet de passer au middleware suivant
-});*/
+});
+/*api pour ajouter un membre à l'équipe le membre serra inséré dans la table "equipe" de la base de données MySQL*/
+
+app.post('/api/equipe', (req, res) => {
+    const nomMembreEquipe = req.body.nomMembreEquipe;
+    const prenomMembreEquipe = req.body.prenomMembreEquipe;
+    const mailMembreEquipe = req.body.mailMembreEquipe;
+    const telephoneMembreEquipe = req.body.telephoneMembreEquipe;
+    const posteMembreEquipe = req.body.posteMembreEquipe;
+    const adresseMembreEquipe = req.body.adresseMembreEquipe;
+    const presentationMembreEquipe = req.body.presentationMembreEquipe;
+    const dateRecrutement = req.body.dateRecrutement;
+
+    const SQL = "INSERT INTO equipe(nom, prenom, mail, telephone, poste, adresse_postale, presentation, date_recrutement) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+    const ordreChamps = [nomMembreEquipe, prenomMembreEquipe, mailMembreEquipe, telephoneMembreEquipe, posteMembreEquipe, adresseMembreEquipe, presentationMembreEquipe, dateRecrutement];
+
+
+    req.getConnection((erreur, connection) => {
+
+        if(erreur) {
+            console.log("Erreur de connexion à la base de données : ", erreur);
+        } else {
+            connection.query(SQL, ordreChamps, (err,nouveauxMembres) => {
+                if (err) {
+                    console.log("Erreur d'ajout d'un membre : ", err);
+                } else {
+                    console.log("BRAVO! Membre de l'équipe ajouté avec succès : ", err);
+                    res.status(302).redirect("/api/acceuil");
+                }
+            });
+        }       
+                
+  
+    });
+
+});
+
+
 
 //j'ajoute un fournisseur dans la table "fournisseur" de la base de données MySQL en utilisant la méthode POST
 app.post('/api/fournisseur', (req, res) => {
-    /*je vais afficher le corps de la requête dans le terminal
-    console.log("Le corps de la requête", req.body);
-    // je vais afficher le nom du fournisseur dans le terminal
-    console.log("Le nom du fournisseur", req.body.nomFounisseur);
-    // je vais afficher le responsable du fournisseur dans le terminal
-    console.log("Le responsable du fournisseur", req.body.responsableFounisseur);
-    // je vais afficher le email du fournisseur dans le terminal
-    console.log("Le mail du fournisseur", req.body.mailFournisseur);
-    // je vais afficher le telephone du fournisseur dans le terminal
-    console.log("Le telephone du fournisseur", req.body.telephoneFounisseur);
-    // je vais afficher le adresse du fournisseur dans le terminal
-    console.log("Le adresse du fournisseur", req.body.adresseFournisseur);
-    // je vais afficher le produit fourni par le fournisseur dans le terminal
-    console.log("Le produit fourni par le fournisseur", req.body.produitFournis);
-    // je vais afficher le site web du fournisseur dans le terminal
-    console.log("Le site web du fournisseur", req.body.presentationFournisseur);
-    */
-
-//je suis en train de definire des variables pour stocker les données du fournisseur qui sont envoyées dans le corps de la requête  
 
     const nomFounisseur = req.body.nomFounisseur;
     const responsableFounisseur = req.body.responsableFounisseur;
@@ -262,30 +213,7 @@ app.get('/api/fournisseur', (req, res) => {
 
 Create : ajouter un fournisseur dans la table "fournisseur" de la base de données MySQL en utilisant la méthode POST*/
 
-/*app.get('/api/fournisseur', (req, res) => {
-    console.log("hiiiiiiiiii !/api/fournisseur");
-    req.getConnection((erreur, connection) => {
-        if(erreur) {
-            console.log(erreur);
-        } else {
-            connection.query("SELECT * FROM fournisseur", [], (err, resultatFournisseur) => {
-                if (err) {
-                    console.log("Erreur dans la requete SQL ", err);
-                } else {
-                    console.log("Mes fournisseurs : ", resultatFournisseur);
-                    res.render("fournisseur", {resultatFournisseur});
-                }
-            });
 
-        }
-    });
-
-});*/
-
-/*j'ajoute un plat dans la table "plat" de la base de données MySQL en utilisant la méthode POST   
-   app.post('/api/acceuil', (req, res) => {
-
-});*/
 
 
 
